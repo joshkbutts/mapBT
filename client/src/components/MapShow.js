@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom'
 
 const MapShow = (props) => {
   const [erros, setErrors] = useState([])
-  const [map, setMap] = useState({})
+  const [map, setMap] = useState({
+    markers: []
+  })
 
   const { id } = useParams()
 
@@ -78,13 +80,11 @@ const MapShow = (props) => {
           map: resultsMap,
           position: results[0].geometry.location,
         });
-        debugger
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
     });
   }
-
 
   useEffect(() => {
     initMap()
@@ -92,10 +92,7 @@ const MapShow = (props) => {
 
   return (
     <div>
-      <div id="map">
-
-
-      </div>
+      <div id="map"></div>
     </div>
   )
 }
