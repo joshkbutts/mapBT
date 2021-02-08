@@ -91,7 +91,11 @@ const RegistrationForm = () => {
         <div>
           <label>
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input
+              type="text"
+              name="email"
+              value={userPayload.email}
+              onChange={onInputChange} />
             <FormError error={errors.email} />
           </label>
         </div>
@@ -120,7 +124,10 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Register" />
+          <input
+            type="submit"
+            className="button"
+            value="Register" />
         </div>
       </form>
     </div>
