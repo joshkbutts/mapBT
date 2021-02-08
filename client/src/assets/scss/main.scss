@@ -1,0 +1,82 @@
+@import "./foundation/settings";
+@import "~foundation-sites/scss/foundation";
+@include foundation-everything;
+// place global css here
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  background-image: url(https://cdn.wallpapered.com/wp-content/uploads/2019/01/30155346/Pastel-Blue-World-Map.jpg);
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#map {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.main-container {
+  background-color: #f9f7f7;
+  max-width: 850px;
+  margin: 0 auto;
+  height: 100vh;
+  border-radius: 15px;
+  padding: 30px 30px;
+}
+
+.user-tile {
+  background-color: #dbe2ef;
+  border-radius: 15px;
+  margin: 20px;
+  opacity: 0.8;
+}
+
+.user-tile:hover {
+  opacity: 1;
+}
+
+.subheader {
+  font-family: 'Quicksand', 'sans-serif';
+  color: #222831;
+}
+
+.map-img {
+  height: 80px;
+  width: 100px;
+}
+
+.user-travel-button {
+  text-align: center;
+  padding-top: 45px;
+}
+
+
+
