@@ -20,6 +20,13 @@ const TopBar = ({ user }) => {
     </li>,
   ];
 
+  let userCheck
+  if (user) {
+    userCheck = user.id
+  } else {
+    userCheck = ''
+  }
+
   return (
     <div className="top-bar">
       <div className="top-bar-left">
@@ -29,7 +36,7 @@ const TopBar = ({ user }) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/my-map">myMap</Link>
+            <Link to={`/my-map/${userCheck}`}>myMap</Link>
           </li>
         </ul>
       </div>
