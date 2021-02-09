@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import GoogleMapReact from 'google-map-react'
 import Map from './Map'
 import { useParams } from 'react-router-dom'
-import LocationPin from './LocationPin'
+import UserRecentTravelsList from './UserRecentTravelsList'
 
 const MapShow = (props) => {
   const [erros, setErrors] = useState([])
@@ -34,10 +33,15 @@ const MapShow = (props) => {
   return (
     <div className="grid-x grid-margin-x main-container">
       <div className="cell small-9">
-        <Map location={map.markers} />
+        <Map 
+        location={map.markers} 
+        />
       </div>
       <div className="cell small-3">
-        <h1>users travels</h1>
+        <UserRecentTravelsList 
+        markerText={map.markers}
+        user={map.email}
+        />
       </div>
     </div>
   )
