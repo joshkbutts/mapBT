@@ -1,5 +1,5 @@
 import express from 'express'
-import { User } from '../../../models/index.js'
+import { User, Marker } from '../../../models/index.js'
 
 const mapRouter = new express.Router()
 
@@ -16,7 +16,7 @@ mapRouter.get("/:id", async (req, res) => {
   try {
     const id = req.params.id
     const map = await User.query().findById(id)
-    debugger
+    map.markers = await map.$relatedQuery("markers")
     return res.status(200).json({ map })
   } catch (error) {
     return res.status(500).json({ errors: error })
