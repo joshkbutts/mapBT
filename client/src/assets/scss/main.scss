@@ -52,6 +52,30 @@ body {
   padding: 30px 30px;
 }
 
+.google-map {
+  padding: 10px;
+  width: 100%;
+  height: 70vh;
+  border: 1px solid #dbe2ef;
+  background-color: #dbe2ef;
+  border-radius: 15px;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  color: var(--main-blue);
+}
+
+.pin-icon {
+  font-size: 3rem;
+}
+
+.pin-text {
+  font-size: 1.3em;
+}
+
 .user-tile {
   background-color: #dbe2ef;
   border-radius: 15px;
