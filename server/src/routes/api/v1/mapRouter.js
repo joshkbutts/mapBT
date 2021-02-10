@@ -1,7 +1,10 @@
 import express from 'express'
-import { User, Marker } from '../../../models/index.js'
+import { User } from '../../../models/index.js'
+import mapMarkersRouter from './mapMarkersRouter.js'
 
 const mapRouter = new express.Router()
+
+mapRouter.use('/:userId/markers', mapMarkersRouter)
 
 mapRouter.get("/", async (req, res) => {
   try {
