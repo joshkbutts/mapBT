@@ -4,7 +4,6 @@ import LocationPin from './LocationPin'
 import QuestionMarker from './QuestionMarker'
 
 const Map = (props) => {
-
   const center = {
     center: {
       lat: 42.40,
@@ -29,6 +28,7 @@ const Map = (props) => {
   let qMarker = <QuestionMarker
     lat={props.selectedArea.lat}
     lng={props.selectedArea.lng}
+    text='Add this location?'
   />
 
   if (props.selectedArea.lat === null || props.selectedArea.lng === null) {

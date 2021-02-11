@@ -2,12 +2,12 @@ import React from 'react'
 import UserRecentTravelTile from './UserRecentTravelTile'
 
 const UserRecentTravelsList = (props) => {
-  
   const travelTileInfo = props.markerText.map(tileText => {
     return (
       <UserRecentTravelTile
         key={tileText.id}
         tileText={tileText}
+        deleteTravel={props.deleteTravel}
       />
     )
   })
