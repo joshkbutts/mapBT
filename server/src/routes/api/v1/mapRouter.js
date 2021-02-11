@@ -19,8 +19,8 @@ mapRouter.get("/:id", async (req, res) => {
   try {
     const id = req.params.id
     const map = await User.query().findById(id)
-    map.markers = await map.$relatedQuery("markers")
-    return res.status(200).json({ map })
+    const markers = await map.$relatedQuery("markers")
+    return res.status(200).json({ map: map, markers: markers })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }

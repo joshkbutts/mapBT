@@ -6,7 +6,7 @@ const UserTile = (props) => {
     <div className="user-tile">
 
       <div className="grid-x">
-        <div className="cell small-6">
+        <div className="cell small-6 subheader">
           <h5>
             {props.map.email}'s Map
           </h5>

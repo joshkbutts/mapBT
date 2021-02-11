@@ -75,15 +75,23 @@ hr {
 
 .pin-icon {
   font-size: 3rem;
+  
   opacity: 0.8;
+  color:#112d4e;
 }
 
 .pin-icon:hover {
   opacity: 1;
 }
 
-.pin-text {
+.question-pin-text {
   font-size: 1.3em;
+  color:#112d4e;
+  background-color: #dbe2ef;
+  border-style: solid;
+  border-color: #112d4e;
+  border-radius: 15%;
+  padding: 2px;
 }
 
 .user-tile {
@@ -111,7 +119,7 @@ hr {
 
 .subheader {
   font-family: 'Quicksand', 'sans-serif';
-  color: #222831;
+  color: #112d4e;
 }
 
 .map-img {

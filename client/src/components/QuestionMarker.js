@@ -6,7 +6,7 @@ const QuestionMarker = ({ text }) => {
   return (
     <div className="pin">
       <Icon icon={mapMarkerQuestion} className="pin-icon" />
-      <p className="pin-text">{text}</p>
+      <p className="question-pin-text">{text}</p>
     </div>
   )
 }

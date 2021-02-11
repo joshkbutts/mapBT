@@ -3,20 +3,19 @@ import Map from './Map'
 import { useParams } from 'react-router-dom'
 import UserRecentTravelsList from './UserRecentTravelsList'
 import NewTravelForm from './NewTravelForm'
-import QuestionMarker from './QuestionMarker'
 import translateServerErrors from '../services/translateServerErrors'
 
 const MapShow = (props) => {
   const { id } = useParams()
   const [erros, setErrors] = useState([])
-  const [map, setMap] = useState({
-    markers: []
-  })
+  const [map, setMap] = useState({})
+  const [markers, setMarkers] = useState([])
+
   const [selectedArea, setSelectedArea] = useState({
     lat: '',
     lng: ''
   })
-
+  
   const getMap = async () => {
     try {
       const response = await fetch(`/api/v1/my-map/${id}`)
@@ -27,13 +26,14 @@ const MapShow = (props) => {
       }
       const mapBody = await response.json()
       setMap(mapBody.map)
+      setMarkers(mapBody.markers)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
 
   const postTravel = async (newMarkerData) => {
-    let allData = {...newMarkerData, ...selectedArea}
+    let allData = { ...newMarkerData, ...selectedArea }
     try {
       const response = await fetch(`/api/v1/my-map/${id}/markers`, {
         method: "POST",
@@ -54,12 +54,35 @@ const MapShow = (props) => {
         }
       } else {
         const body = await response.json()
-        setMap({
-          ...map,
-          markers: [...map.markers, body.marker]
+        setMarkers([
+          ...markers, body.marker
+        ])
+        setSelectedArea({
+          lat: '',
+          lng: ''
         })
       }
     } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const deleteTravel = async ( markerData ) => {
+    try {
+      const response = await fetch(`/api/v1/markers/${markerData}`, {
+        method: "DELETE",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+      })
+      if (!response.ok) { 
+        const errorMessage = `${response.status} ${response.statusText}`
+        const error = new Error(errorMessage);
+        throw (error)
+      }
+      const body = await response.json()
+      setMarkers(body.markers)
+    } catch (error) {  
       console.error(`Error in fetch: ${error.message}`)
     }
   }
@@ -77,15 +100,16 @@ const MapShow = (props) => {
       <div className="grid-x grid-margin-x">
         <div className="cell small-9">
           <Map
-            location={map.markers}
+            location={markers}
             onClick={onClick}
             selectedArea={selectedArea}
           />
         </div>
         <div className="cell small-3">
           <UserRecentTravelsList
-            markerText={map.markers}
+            markerText={markers}
             user={map.email}
+            deleteTravel={deleteTravel}
           />
         </div>
       </div>
