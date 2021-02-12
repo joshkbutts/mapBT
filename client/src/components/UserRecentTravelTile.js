@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import UserRecentTravelEditForm from './UserRecentTravelEditForm'
 
 const UserRecentTravelTile = (props) => {
-  
+
+  const [isEditing, setIsEditing] = useState(false)
+
+  let editForm
+
+  if (isEditing) {
+    editForm = <div><UserRecentTravelEditForm id={props.tileText.id} editMarker={props.editMarker} /></div>
+  }
+  const handleEdit = () => {
+    if (!isEditing) {
+      setIsEditing(true)
+    } else {
+      setIsEditing(false)
+    }
+  }
+
   const handleDelete = () => {
     props.deleteTravel(props.tileText.id)
   }
@@ -17,12 +33,13 @@ const UserRecentTravelTile = (props) => {
       </h6>
       <div className='grid-x'>
         <div className='cell small-6'>
-          <h6> edit </h6>
+          <h6 onClick={handleEdit}> edit </h6>
         </div>
         <div className='cell small-6'>
           <h6 onClick={handleDelete}> delete </h6>
         </div>
       </div>
+      {editForm}
     </div>
   )
 }
