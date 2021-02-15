@@ -6,9 +6,21 @@ import cleanUserInput from '../../../services/cleanUserInput.js'
 
 const markersRouter = new express.Router()
 
+markersRouter.get('/', async (req, res) => {
+  try {
+    const markers = await Marker.query()
+    for (const marker of markers) {
+      marker.user = await marker.$relatedQuery('user')
+    }
+    return res.status(200).json({ markers })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
 markersRouter.get('/:id', async (req, res) => {
   try {
-    const {id} = req.params
+    const { id } = req.params
     const marker = await Marker.query().findById(id)
     return res.status(200).json({ marker })
   } catch (error) {

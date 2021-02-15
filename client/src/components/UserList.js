@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import UserTile from './UserTile'
+import { Link } from 'react-router-dom'
 
 const UserList = (props) => {
   const [maps, setMaps] = useState([])
@@ -25,10 +26,12 @@ const UserList = (props) => {
 
   const userMapTiles = maps.map(map => {
     return (
-      <UserTile
-        key={map.id}
-        map={map}
-      />
+      <Link to={`/my-map/${map.id}`}>
+        <UserTile
+          key={map.id}
+          map={map}
+        />
+      </Link>
     )
   })
 
@@ -38,10 +41,9 @@ const UserList = (props) => {
         current users
       </h1>
 
-      <div>
+      <nav>
         {userMapTiles}
-      </div>
-
+      </nav>
     </div>
   )
 }

@@ -123,8 +123,9 @@ hr {
 }
 
 .map-img {
-  height: 80px;
+  height: 100%;
   width: 100px;
+  border-radius: 15%;
 }
 
 .user-travel-button {
@@ -139,5 +140,7 @@ hr {
   max-width: 500px;
 }
 
+nav {height:75vh; width:100%;}
+nav {overflow:hidden; overflow-y:scroll;}
 
 

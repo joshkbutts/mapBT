@@ -3,23 +3,19 @@ import { Link } from 'react-router-dom'
 const UserTile = (props) => {
   
   return (
-    <div className="user-tile">
+    <div className="user-tile text-center">
 
       <div className="grid-x">
-        <div className="cell small-6 subheader">
-          <h5>
-            {props.map.email}'s Map
-          </h5>
+        <div className="cell small-4 subheader">
+          
           <div className="map-img">
             <img className="map-img" src="https://allfreedesigns.com/wp-content/uploads/2014/08/vector-world-map-3.jpg" />
           </div>
         </div>
 
-        <div className="cell small-6 user-travel-button">
+        <div className="cell small-8 text-center">
           <h6>
-            <Link to={`/my-map/${props.map.id}`}>
-            View {props.map.email}'s Travels
-            </Link>
+          {props.map.email}'s Map
           </h6>
         </div>
       </div>
