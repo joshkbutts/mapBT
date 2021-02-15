@@ -13,7 +13,8 @@ class Marker extends Model {
         lat: { type: ['string', 'integer'] },
         lng: { type: ['string', 'integer'] },
         title: { type: 'string' },
-        description: { type: 'string' }
+        description: { type: 'string' },
+        image: { type: 'string' }
       }
     }
   }

@@ -3,11 +3,11 @@ import UserRecentTravelTile from './UserRecentTravelTile'
 
 const UserRecentTravelsList = (props) => {
 
-  const travelTileInfo = props.markerText.map(tileText => {
+  const travelTileInfo = props.markers.map(marker => {
     return (
       <UserRecentTravelTile
-        key={tileText.id}
-        tileText={tileText}
+        key={marker.id}
+        marker={marker}
         deleteTravel={props.deleteTravel}
         editMarker={props.editMarker}
       />

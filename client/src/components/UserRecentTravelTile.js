@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import UserRecentTravelEditForm from './UserRecentTravelEditForm'
 
 const UserRecentTravelTile = (props) => {
-
+  
   const [isEditing, setIsEditing] = useState(false)
 
   let editForm
 
   if (isEditing) {
-    editForm = <div><UserRecentTravelEditForm id={props.tileText.id} editMarker={props.editMarker} /></div>
+    editForm = <div><UserRecentTravelEditForm id={props.marker.id} editMarker={props.editMarker} /></div>
   }
   const handleEdit = () => {
     if (!isEditing) {
@@ -19,18 +19,19 @@ const UserRecentTravelTile = (props) => {
   }
 
   const handleDelete = () => {
-    props.deleteTravel(props.tileText.id)
+    props.deleteTravel(props.marker.id)
   }
 
   return (
     <div className="user-recent-travel-tile text-center">
       <h6>
-        {props.tileText.title}
+        {props.marker.title}
       </h6>
       <hr></hr>
       <h6>
-        {props.tileText.description}
+        {props.marker.description}
       </h6>
+      <img src={props.marker.image}/>
       <div className='grid-x'>
         <div className='cell small-6'>
           <h6 onClick={handleEdit}> edit </h6>

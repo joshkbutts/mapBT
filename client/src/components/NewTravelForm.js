@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
+import Dropzone from 'react-dropzone'
 
-const NewTravelForm = ({ postTravel }) => {
+const NewTravelForm = (props) => {
   const [newMarker, setNewMarker] = useState({
     title: '',
-    description: ''
+    description: '',
+    image: {}
+  })
+
+  const [uploadedImage, setUploadedImage] = useState({
+    preview: ''
   })
 
   const handleInputChange = event => {
@@ -13,17 +19,42 @@ const NewTravelForm = ({ postTravel }) => {
     })
   }
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    postTravel(newMarker)
+  const handleImageUpload = (acceptedImage) => {
     setNewMarker({
-      title: '',
-      description: ''
+      ...newMarker,
+      image: acceptedImage[0]
+    })
+
+    setUploadedImage({
+      preview: URL.createObjectURL(acceptedImage[0])
     })
   }
 
+  const clearForm = () => {
+    setNewMarker({
+      title: '',
+      description: '',
+      image: {}
+    })
+    setUploadedImage({
+      preview: ''
+    })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    const body = new FormData()
+    body.append('title', newMarker.title)
+    body.append('description', newMarker.description)
+    body.append('image', newMarker.image)
+    body.append('lat', props.selectedArea.lat)
+    body.append('lng', props.selectedArea.lng)
+    props.postTravel(body)
+    clearForm()
+  }
+
   return (
-    <div className='form user-tile text-center'>
+    <div className='form user-tile text-center callout primary'>
       <form onSubmit={handleSubmit}>
 
         <div>
@@ -50,12 +81,32 @@ const NewTravelForm = ({ postTravel }) => {
             />
           </label>
         </div>
-        
-        <div>
+
+        <Dropzone onDrop={handleImageUpload}>
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Upload a Picture! Drag 'n' drop or click to upload</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
+
+        <img src={uploadedImage.preview} />
+
+        <div className='button-group'>
           <input
+            className='button'
             type='submit'
             value='Add Destination!'
           />
+          <input 
+          className='button'
+          type='button' 
+          value="Clear"
+          onClick={clearForm}
+        />
         </div>
       </form>
     </div>
