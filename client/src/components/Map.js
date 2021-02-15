@@ -13,14 +13,14 @@ const Map = (props) => {
 
   const zoom = 7
 
-  const markerData = props.location.map(location => {
+  const markerData = props.markers.map(marker => {
     return (
       <LocationPin
-        key={location.id}
-        lat={location.lat}
-        lng={location.lng}
-        title={location.title}
-        description={location.description}
+        key={marker.id}
+        lat={marker.lat}
+        lng={marker.lng}
+        title={marker.title}
+        description={marker.description}
       />
     )
   })

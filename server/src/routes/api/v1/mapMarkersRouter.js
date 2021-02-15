@@ -1,20 +1,23 @@
-import express, { response } from 'express'
+import express from 'express'
 import objection from 'objection'
 const { ValidationError } = objection
 
+import uploadImage from '../../../services/uploadImage.js'
 import { Marker } from '../../../models/index.js'
 import cleanUserInput from '../../../services/cleanUserInput.js'
 
 const mapMarkersRouter = new express.Router({ mergeParams: true })
 
-mapMarkersRouter.post('/', async (req, res) => {
-  const {body} = req
-  const formInput = cleanUserInput(body)
-  const { title, description, lat, lng } = formInput
-  const { userId } = req.params
-  
+mapMarkersRouter.post('/', uploadImage.single('image'), async (req, res) => {
   try {
-    const marker = await Marker.query().insertAndFetch({ title, description, lat, lng, userId })
+    const { body } = req
+    const formInput = await cleanUserInput(body)
+    const formData = {
+      ...formInput,
+      image: req.file.location,
+      userId: req.user.id
+    }
+    const marker = await Marker.query().insertAndFetch(formData)
     marker.user = await marker.$relatedQuery('user')
     return res.status(201).json({ marker })
   } catch (error) {

@@ -14,7 +14,7 @@ const MapShow = (props) => {
     lat: '',
     lng: ''
   })
-  
+
   const getMap = async () => {
     try {
       const response = await fetch(`/api/v1/my-map/${id}`)
@@ -32,14 +32,13 @@ const MapShow = (props) => {
   }
 
   const postTravel = async (newMarkerData) => {
-    let allData = { ...newMarkerData, ...selectedArea }
     try {
       const response = await fetch(`/api/v1/my-map/${id}/markers`, {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json"
+          "Accept": "image/jpeg"
         }),
-        body: JSON.stringify(allData)
+        body: newMarkerData
       })
       if (!response.ok) {
         if (response.status === 422) {
@@ -66,7 +65,7 @@ const MapShow = (props) => {
     }
   }
 
-  const deleteTravel = async ( markerData ) => {
+  const deleteTravel = async (markerData) => {
     try {
       const response = await fetch(`/api/v1/markers/${markerData}`, {
         method: "DELETE",
@@ -74,14 +73,14 @@ const MapShow = (props) => {
           "Content-Type": "application/json"
         }),
       })
-      if (!response.ok) { 
+      if (!response.ok) {
         const errorMessage = `${response.status} ${response.statusText}`
         const error = new Error(errorMessage);
         throw (error)
       }
       const body = await response.json()
       setMarkers(body.markers)
-    } catch (error) {  
+    } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
@@ -128,14 +127,14 @@ const MapShow = (props) => {
       <div className="grid-x grid-margin-x">
         <div className="cell small-9">
           <Map
-            location={markers}
+            markers={markers}
             onClick={onClick}
             selectedArea={selectedArea}
           />
         </div>
         <div className="cell small-3">
           <UserRecentTravelsList
-            markerText={markers}
+            markers={markers}
             user={map.email}
             deleteTravel={deleteTravel}
             editMarker={editMarker}
