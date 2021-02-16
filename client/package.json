@@ -42,6 +42,7 @@
     "react-dropzone": "^11.3.1",
     "react-google-maps": "^9.4.5",
     "react-hot-loader": "^4.12.21",
+    "react-modal": "^3.12.1",
     "react-router-dom": "5.2",
     "redbox-react": "~1.6",
     "sass-loader": "^8.0.2",

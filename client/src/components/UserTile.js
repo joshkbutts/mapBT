@@ -6,7 +6,7 @@ const UserTile = (props) => {
     <div className="user-tile text-center">
 
       <div className="grid-x">
-        <div className="cell small-4 subheader">
+        <div className="cell small-4">
           
           <div className="map-img">
             <img className="map-img" src="https://allfreedesigns.com/wp-content/uploads/2014/08/vector-world-map-3.jpg" />
