@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import UserRecentTravelsList from './UserRecentTravelsList'
 import NewTravelForm from './NewTravelForm'
 import translateServerErrors from '../services/translateServerErrors'
+import Modal from 'react-modal'
 
 const MapShow = (props) => {
   const { id } = useParams()
@@ -122,9 +123,35 @@ const MapShow = (props) => {
     setSelectedArea({ lat: lat.toString(), lng: lng.toString() })
   }
 
+  var subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed. 
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
+
   return (
     <div className="main-container">
       <div className="grid-x grid-margin-x">
+
         <div className="cell small-9">
           <Map
             markers={markers}
@@ -141,10 +168,20 @@ const MapShow = (props) => {
           />
         </div>
       </div>
-      <NewTravelForm
-        postTravel={postTravel}
-        selectedArea={selectedArea}
-      />
+      <button onClick={openModal}>Add this Location!</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        contentLabel='Modal Form'
+        ariaHideApp={false}
+        style={customStyles}
+      >
+        <NewTravelForm
+          postTravel={postTravel}
+          selectedArea={selectedArea}
+        />
+      </Modal>
     </div>
   )
 }

@@ -33,6 +33,7 @@ const RecentTravelsList = (props) => {
         user={marker.user.email}
         title={marker.title}
         description={marker.description}
+        image={marker.image}
       />
       </Link>
     )

@@ -31,7 +31,7 @@ const UserRecentTravelTile = (props) => {
       <h6>
         {props.marker.description}
       </h6>
-      <img src={props.marker.image}/>
+      <img className='show-page-img' src={props.marker.image}/>
       <div className='grid-x'>
         <div className='cell small-6'>
           <h6 onClick={handleEdit}> edit </h6>
