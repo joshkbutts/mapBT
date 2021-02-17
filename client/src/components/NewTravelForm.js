@@ -58,7 +58,7 @@ const NewTravelForm = (props) => {
       <form onSubmit={handleSubmit}>
 
         <div>
-          <label htmlFor='title' class='right inline'>
+          <label htmlFor='title' className='right inline'>
             <input
               className='input'
               name='title'
