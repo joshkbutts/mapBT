@@ -27,17 +27,17 @@ const UserRecentTravelTile = (props) => {
       <h6>
         {props.marker.title}
       </h6>
-      <hr></hr>
+      <img className='show-page-img' src={props.marker.image}/>
       <h6>
         {props.marker.description}
       </h6>
-      <img className='show-page-img' src={props.marker.image}/>
+      <hr></hr>
       <div className='grid-x'>
         <div className='cell small-6'>
-          <h6 onClick={handleEdit}> edit </h6>
+          <h6 className='edit-button' onClick={handleEdit}> edit </h6>
         </div>
         <div className='cell small-6'>
-          <h6 onClick={handleDelete}> delete </h6>
+          <h6 className='delete-button' onClick={handleDelete}> delete </h6>
         </div>
       </div>
       {editForm}

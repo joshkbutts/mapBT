@@ -2,11 +2,11 @@ import React from 'react'
 import Icon from '@iconify/react'
 import mapMarkerQuestion from '@iconify/icons-mdi/map-marker-question'
 
-const QuestionMarker = ({ text }) => {
+const QuestionMarker = (props) => {
   return (
     <div className="pin">
       <Icon icon={mapMarkerQuestion} className="pin-icon" />
-      <p className="question-pin-text">{text}</p>
+      <button className='modal-button subheader' onClick={props.openModal}>Click to add this Location!</button>
     </div>
   )
 }

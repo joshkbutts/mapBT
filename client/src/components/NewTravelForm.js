@@ -54,11 +54,11 @@ const NewTravelForm = (props) => {
   }
 
   return (
-    <div className='form user-tile text-center callout primary'>
+    <div className='form form-tile text-center callout'>
       <form onSubmit={handleSubmit}>
 
         <div>
-          <label htmlFor='title'>
+          <label htmlFor='title' class='right inline'>
             <input
               className='input'
               name='title'
@@ -87,27 +87,30 @@ const NewTravelForm = (props) => {
             <section>
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
-                <p>Upload a Picture! Drag 'n' drop or click to upload</p>
+                <p className='subheader'>Upload a Picture! Drag 'n' drop or click to upload</p>
               </div>
             </section>
           )}
         </Dropzone>
 
         <img src={uploadedImage.preview} />
-
-        <div className='button-group'>
-          <input
-            className='button'
-            type='submit'
-            value='Add Destination!'
-          />
-          <input 
-          className='button'
-          type='button' 
-          value="Clear"
-          onClick={clearForm}
-        />
+        
+        <div className='row'>
+          <div className='text-center'>
+            <input
+              className='button success'
+              type='submit'
+              value='Add Destination!'
+            />
+            <input
+              className='button alert'
+              type='button'
+              value="Clear"
+              onClick={clearForm}
+            />
+          </div>
         </div>
+      
       </form>
     </div>
   )
