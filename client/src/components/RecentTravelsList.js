@@ -27,7 +27,7 @@ const RecentTravelsList = (props) => {
 
   const allRecentTravelTiles = markers.map(marker => {
     return (
-      <Link to={`/my-map/${marker.user.id}`}>
+      <Link  key={marker.id} to={`/my-map/${marker.user.id}`}>
       <RecentTravelTile
         key={marker.id}
         user={marker.user.userName}
