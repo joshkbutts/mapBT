@@ -53,8 +53,8 @@ const UserRecentTravelEditForm = (props) => {
   }
 
   return (
-    <div>
-      <h3>Edit Travel Info</h3>
+    <div className='form form-tile text-center callout'>
+      <h3 className='subheader'>Edit Travel Info</h3>
       <form onSubmit={onSubmitHandler}>
         <label htmlFor='title'>
           <input
@@ -76,10 +76,21 @@ const UserRecentTravelEditForm = (props) => {
           />
         </label>
 
-        <input
-          type='submit'
-          value='Edit Destination!'
-        />
+        <div className='row'>
+          <div className='text-center'>
+            <input
+              className='button success'
+              type='submit'
+              value='Edit Destination!'
+            />
+            <input
+              className='button alert'
+              type='button'
+              value="Clear"
+              onClick={clearForm}
+            />
+          </div>
+        </div>
       </form>
     </div>
   )
