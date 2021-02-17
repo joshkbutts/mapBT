@@ -26,7 +26,7 @@ const UserList = (props) => {
 
   const userMapTiles = maps.map(map => {
     return (
-      <Link to={`/my-map/${map.id}`}>
+      <Link to={`/my-map/${map.id}`} key={map.id}>
         <UserTile
           key={map.id}
           map={map}
@@ -38,11 +38,11 @@ const UserList = (props) => {
   return (
     <div>
       <h1 className="subheader text-center">
-        current users
+        users
       </h1>
 
       <nav>
-        {userMapTiles}
+        {userMapTiles.reverse()}
       </nav>
     </div>
   )

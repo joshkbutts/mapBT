@@ -117,13 +117,16 @@ const MapShow = (props) => {
 
   useEffect(() => {
     getMap()
+    setSelectedArea({
+      lat: '',
+      lng: ''
+    })
   }, [])
 
   const onClick = ({ lat, lng }) => {
     setSelectedArea({ lat: lat.toString(), lng: lng.toString() })
   }
 
-  var subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
@@ -138,18 +141,35 @@ const MapShow = (props) => {
   }
 
   const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
     }
   };
 
   return (
     <div className="main-container">
+
+      <div className='grid-x'>
+        <div className='cell small-9'>
+          <h3 className="subheader">
+            {map.userName}'s Map
+          </h3>
+        </div>
+
+        <div className='cell small-3'>
+          <h3 className="subheader">
+            recent travels
+          </h3>
+        </div>
+
+      </div>
+
+
       <div className="grid-x grid-margin-x">
 
         <div className="cell small-9">
@@ -157,23 +177,23 @@ const MapShow = (props) => {
             markers={markers}
             onClick={onClick}
             selectedArea={selectedArea}
+            openModal={openModal}
           />
         </div>
+
         <div className="cell small-3">
           <UserRecentTravelsList
             markers={markers}
-            user={map.email}
+            user={map.userName}
             deleteTravel={deleteTravel}
             editMarker={editMarker}
           />
         </div>
       </div>
-      <button onClick={openModal}>Add this Location!</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        contentLabel='Modal Form'
         ariaHideApp={false}
         style={customStyles}
       >

@@ -21,6 +21,7 @@ const Map = (props) => {
         lng={marker.lng}
         title={marker.title}
         description={marker.description}
+        image={marker.image}
       />
     )
   })
@@ -29,17 +30,17 @@ const Map = (props) => {
     lat={props.selectedArea.lat}
     lng={props.selectedArea.lng}
     text='Add this location?'
+    openModal={props.openModal}
   />
 
   if (props.selectedArea.lat === null || props.selectedArea.lng === null) {
-    qMarker = null
+    qMarker = undefined
   }
 
   return (
-
     <div className="google-map">
       <GoogleMapReact
-        
+        bootstrapURLKeys={{ key: 'AIzaSyCLGuWgyni0xSClC9gTvQ756qU2m65qZz0' }}
         defaultCenter={center.center}
         defaultZoom={zoom}
         onClick={props.onClick}

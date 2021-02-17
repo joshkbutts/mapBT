@@ -9,13 +9,13 @@ const UserTile = (props) => {
         <div className="cell small-4">
           
           <div className="map-img">
-            <img className="map-img" src="https://allfreedesigns.com/wp-content/uploads/2014/08/vector-world-map-3.jpg" />
+            <img className="map-img" src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1078&q=80" />
           </div>
         </div>
 
-        <div className="cell small-8 text-center">
+        <div className="cell small-8 text-center user-name-home">
           <h6>
-          {props.map.email}'s Map
+          {props.map.userName}'s Map
           </h6>
         </div>
       </div>

@@ -30,7 +30,7 @@ const RecentTravelsList = (props) => {
       <Link to={`/my-map/${marker.user.id}`}>
       <RecentTravelTile
         key={marker.id}
-        user={marker.user.email}
+        user={marker.user.userName}
         title={marker.title}
         description={marker.description}
         image={marker.image}
@@ -41,11 +41,11 @@ const RecentTravelsList = (props) => {
 
   return (
     <div>
-      <h1 className="subheader">
+      <h1 className="subheader text-center">
         recent travels
       </h1>
       <nav>
-        {allRecentTravelTiles}
+        {allRecentTravelTiles.reverse()}
       </nav>
     </div>
   )

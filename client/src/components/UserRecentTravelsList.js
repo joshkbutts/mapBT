@@ -16,10 +16,9 @@ const UserRecentTravelsList = (props) => {
 
   return (
     <div>
-      <h4 className="subheader">
-        {props.user}'s recent travels
-      </h4>
-      {travelTileInfo}
+      <nav>
+        {travelTileInfo.reverse()}
+      </nav>
     </div>
   )
 }
