@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import UserRecentTravelEditForm from './UserRecentTravelEditForm'
 import CommentForm from './CommentForm'
+import CommentList from './CommentList'
 
 const UserRecentTravelShow = (props) => {
+  const id = props.marker.id
   const [editModalIsOpen, setEditIsOpen] = useState(false);
 
   function openEditModal() {
@@ -30,7 +32,7 @@ const UserRecentTravelShow = (props) => {
   };
 
   const handleDelete = () => {
-    props.deleteTravel(props.marker.id)
+    props.deleteTravel(id)
   }
 
   return (
@@ -71,7 +73,7 @@ const UserRecentTravelShow = (props) => {
 
       <hr></hr>
       <CommentForm />
-
+      <CommentList id={id}/>
     </div>
   )
 }

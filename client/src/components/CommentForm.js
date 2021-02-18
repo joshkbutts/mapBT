@@ -4,7 +4,7 @@ const CommentForm = (props) => {
   return(
     <div>
       <h4 className='subheader'>
-        comments
+        add a comment
       </h4>
 
       
