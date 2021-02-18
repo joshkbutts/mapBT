@@ -20,7 +20,7 @@ class Marker extends Model {
   }
 
   static get relationMappings() {
-    const { User } = require('./index')
+    const { User, Comment } = require('./index')
 
     return {
       user: {
@@ -29,6 +29,14 @@ class Marker extends Model {
         join: {
           from: 'markers.userId',
           to: 'users.id'
+        }
+      },
+      comments: {
+        relation: Model.HasManyRelation,
+        modelClass: Comment,
+        join: {
+          from: 'markers.id',
+          to: 'comments.markerId'
         }
       }
     }

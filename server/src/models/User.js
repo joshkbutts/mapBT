@@ -37,7 +37,7 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Marker } = require('./index')
+    const { Marker, Comment } = require('./index')
 
     return {
       markers: {
@@ -46,6 +46,14 @@ class User extends uniqueFunc(Model) {
         join: {
           from: 'users.id',
           to: 'markers.userId'
+        }
+      },
+      comments: {
+        relation: Model.HasManyRelation,
+        modelClass: Comment,
+        join: {
+          from: 'users.id',
+          to: 'comments.userId'
         }
       }
     }
