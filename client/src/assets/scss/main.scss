@@ -198,15 +198,41 @@ nav {
 }
 
 .edit-button {
+  border-radius: 10px;
   background-color: green;
-  margin-top: 3px;
-  margin-left:12px;
-  margin-right:12px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right:70px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .delete-button {
+  border-radius: 10px;
   color: white;
   background-color: red;
-  margin-top: 3px;
-  margin-left:12px;
-  margin-right:12px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.travel-show-tile {
+  background-color: #EAF3E2;
+  border-radius: 10px;
+  color: black;
+  box-shadow: 2px 4px 8px 1px black;
+}
+
+.travel-show-img {
+  border-radius: 25px;
+  max-width: 300px;
+  width: 100%;
+  padding: 15px;
+}
+
+.travel-show-top {
+  position: relative;
 }
