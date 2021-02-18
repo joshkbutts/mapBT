@@ -1,29 +1,20 @@
 import React, { useState } from 'react'
-import UserRecentTravelEditForm from './UserRecentTravelEditForm'
 import Modal from 'react-modal'
+import UserRecentTravelShow from './UserRecentTravelShow'
 
 const UserRecentTravelTile = (props) => {
+  const [showModalIsOpen, setShowIsOpen] = useState(false)
 
-  
-
- 
- 
-
-  const handleDelete = () => {
-    props.deleteTravel(props.marker.id)
-  }
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
+  function openShowModal() {
+    setShowIsOpen(true)
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed. 
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeShowModal() {
+    setShowIsOpen(false)
   }
 
   const customStyles = {
@@ -39,32 +30,26 @@ const UserRecentTravelTile = (props) => {
 
   return (
     <div className="user-recent-travel-tile text-center">
-      <h6>
-        {props.marker.title}
-      </h6>
-      <img className='show-page-img' src={props.marker.image} />
-      <h6>
-        {props.marker.description}
-      </h6>
-      <hr></hr>
-      <div className='grid-x'>
-        <div className='cell small-6'>
-          <h6 className='edit-button' onClick={openModal}> edit </h6>
-        </div>
-        <div className='cell small-6'>
-          <h6 className='delete-button' onClick={handleDelete}> delete </h6>
-        </div>
+      <div onClick={openShowModal}>
+        <h6>
+          {props.marker.title}
+        </h6>
+        <img className='show-page-img' src={props.marker.image} />
+        <h6>
+          {props.marker.description}
+        </h6>
       </div>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={showModalIsOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        onRequestClose={closeShowModal}
         ariaHideApp={false}
         style={customStyles}
       >
-        <UserRecentTravelEditForm
-          id={props.marker.id}
-          editMarker={props.editMarker}
+        <UserRecentTravelShow 
+        marker={props.marker}
+        deleteTravel={props.deleteTravel}
+        editMarker={props.editMarker}
         />
       </Modal>
     </div>
