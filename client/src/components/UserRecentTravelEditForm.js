@@ -79,15 +79,9 @@ const UserRecentTravelEditForm = (props) => {
         <div className='row'>
           <div className='text-center'>
             <input
-              className='button success'
+              className='confirm-edit-button'
               type='submit'
-              value='Edit Destination!'
-            />
-            <input
-              className='button alert'
-              type='button'
-              value="Clear"
-              onClick={clearForm}
+              value='Edit Destination'
             />
           </div>
         </div>

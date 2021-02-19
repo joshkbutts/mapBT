@@ -74,7 +74,7 @@ const CommentList = (props) => {
         postComment={postComment}
       />
       <div>
-        {allComments.reverse()}
+          {allComments.reverse()}
       </div>
     </div>
 

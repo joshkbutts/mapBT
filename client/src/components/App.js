@@ -9,6 +9,7 @@ import TopBar from "./layout/TopBar";
 import MapShow from './MapShow.js'
 import HomePage from "./HomePage";
 import LandingPage from './LandingPage'
+import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -30,19 +31,19 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/welcome">
           <LandingPage />
         </Route>
-        <Route exact path="/">
-          <HomePage user={currentUser}/>
-        </Route>
         <Route exact path="/my-map">
-          <HomePage user={currentUser}/>
+          <HomePage user={currentUser} />
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/my-map/:id">
-          <MapShow user={currentUser}/>
+          <MapShow user={currentUser} />
         </Route>
       </Switch>
     </Router>

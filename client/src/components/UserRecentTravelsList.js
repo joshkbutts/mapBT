@@ -14,10 +14,18 @@ const UserRecentTravelsList = (props) => {
     )
   })
 
+  let travelCheck
+
+  if (travelTileInfo.length === 0) {
+    travelCheck = <h4 className='text-center subheader'>click the map to make your first post!</h4>
+  } else {
+    travelCheck = travelTileInfo.reverse()
+  }
+
   return (
     <div>
       <nav>
-        {travelTileInfo.reverse()}
+        {travelCheck}
       </nav>
     </div>
   )
