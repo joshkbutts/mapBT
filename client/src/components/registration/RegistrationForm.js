@@ -90,12 +90,12 @@ const RegistrationForm = () => {
   };
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/my-map";
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
-      <h1 className='subheader'>Register</h1>
+    <div className="grid-container" onSubmit={onSubmit} className='reg-form'>
+      <h1 className='subheader text-center'>Register</h1>
       <form>
         <div>
           <label>
@@ -143,8 +143,9 @@ const RegistrationForm = () => {
             <FormError error={errors.passwordConfirmation} />
           </label>
         </div>
-        <div>
+        <div className='text-center'>
           <input
+            id='btn-sign'
             type="submit"
             className="button"
             value="Register" />

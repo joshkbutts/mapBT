@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const NewCommentForm = (props) => {
   const [newComment, setNewComment] = useState({
@@ -24,45 +24,31 @@ const NewCommentForm = (props) => {
     clearForm()
   }
 
-  return(
-    <div>
-      <h4 className='subheader'>
-        add a comment
-      </h4>
-
+  return (
+    <div className='comment-form'> 
       <form onSubmit={handleSubmit}>
 
-        <label htmlFor='commentText'>
-          <input
-          className='input'
-          name='commentText'
-          placeholder='Enter your comment here'
-          value={newComment.commentText}
-          onChange={handleInputChange}
-          />
-        </label>
-
-        <div className='row'>
-          <div className='text-center'>
-            <input
-              className='button success'
-              type='submit'
-              value='Add Comment!'
-            />
-            <input
-              className='button alert'
-              type='button'
-              value="Clear"
-              onClick={clearForm}
-            />
+        <div className='grid-x text-center'>
+          <div className='cell small-12'>
+            <label htmlFor='commentText'>
+              <input
+                id='comment-box'
+                className='input'
+                name='commentText'
+                placeholder='Add a comment...'
+                value={newComment.commentText}
+                onChange={handleInputChange}
+                rows="3"
+                cols="20"
+              />
+            </label>
           </div>
+
+
         </div>
-
       </form>
-
-      
     </div>
   )
-} 
+}
 
 export default NewCommentForm

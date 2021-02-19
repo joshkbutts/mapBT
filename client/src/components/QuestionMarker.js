@@ -5,8 +5,8 @@ import mapMarkerQuestion from '@iconify/icons-mdi/map-marker-question'
 const QuestionMarker = (props) => {
   return (
     <div className="pin">
-      <Icon icon={mapMarkerQuestion} className="pin-icon" />
-      <button className='modal-button subheader' onClick={props.openModal}>Click to add this Location!</button>
+      <Icon icon={mapMarkerQuestion} className="pin-icon"  onClick={props.openModal}/>
+      <button className='modal-button subheader'>Click marker again to add Location!</button>
     </div>
   )
 }

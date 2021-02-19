@@ -25,11 +25,11 @@ const SignOutButton = () => {
   };
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/welcome";
   }
 
   return (
-    <button type="button" className="button" onClick={signOut}>
+    <button id='btn-sign' type="button" className="button" onClick={signOut}>
       Sign Out
     </button>
   );

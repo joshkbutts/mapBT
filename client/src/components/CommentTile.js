@@ -2,16 +2,16 @@ import React from 'react'
 
 const CommentTile = (props) => {
   return (
-    <div>
+    <div className='comment-tile'>
       <hr></hr>
       <div className='grid-x'>
-        <div className='cell small-6'>
-          <h4 className='subheader'>
-            {props.userName} said:
-        </h4>
+        <div className='cell small-2 text-center'>
+          <h5 className='subheader user-name-comment'>
+            {props.userName}
+          </h5>
         </div>
 
-        <div className='cell small-4'>
+        <div className='cell small-6'>
           <h5 className='subheader'>
             {props.commentText}
           </h5>

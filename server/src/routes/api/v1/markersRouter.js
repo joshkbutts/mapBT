@@ -1,5 +1,5 @@
 import express from 'express'
-import { Marker, User } from '../../../models/index.js'
+import { Marker, User, Comment } from '../../../models/index.js'
 import objection from 'objection'
 const { ValidationError } = objection
 import cleanUserInput from '../../../services/cleanUserInput.js'
@@ -32,6 +32,7 @@ markersRouter.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params
     const marker = await Marker.query().findById(id)
+    await marker.$relatedQuery('comments').delete()
     const user = await marker.$relatedQuery('user')
     await Marker.query().deleteById(id)
     const markers = await user.$relatedQuery("markers")
