@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import UserRecentTravelEditForm from './UserRecentTravelEditForm'
-import CommentForm from './CommentForm'
 import CommentList from './CommentList'
 
 const UserRecentTravelShow = (props) => {
@@ -72,7 +71,6 @@ const UserRecentTravelShow = (props) => {
       </div>
 
       <hr></hr>
-      <CommentForm />
       <CommentList id={id}/>
     </div>
   )
