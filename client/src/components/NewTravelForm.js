@@ -98,12 +98,12 @@ const NewTravelForm = (props) => {
         <div className='row'>
           <div className='text-center'>
             <input
-              className='button success'
+              className='add-travel-btn'
               type='submit'
               value='Add Destination!'
             />
             <input
-              className='button alert'
+              className='clear-travel-btn'
               type='button'
               value="Clear"
               onClick={clearForm}

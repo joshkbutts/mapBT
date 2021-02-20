@@ -310,7 +310,7 @@ nav {
   color:#e6e6e6;
 }
 
-.sign-out-btn:hover, #btn-sign:hover {
+.sign-out-btn:hover, #btn-sign:hover, .add-travel-btn:hover {
   background-color: hsl(106, 97%, 40%);
   box-shadow: 0 0 3px 0 rgb(11, 134, 6)
 }
@@ -336,3 +336,29 @@ nav {
   margin-top: 50px;
 }
 
+.add-travel-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  background-color: #EAF3E2;
+  border-radius: 8px;
+  margin: 0 5px 0 0; 
+  outline: none;
+  color: black;
+}
+
+.clear-travel-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  background-color: #EAF3E2;
+  border-radius: 8px;
+  margin: 0 5px 0 0; 
+  outline: none;
+  color: black;
+}
+
+.clear-travel-btn:hover {
+  background-color: hsl(0, 100%, 57%);
+  box-shadow: 0 0 3px 0 rgb(233, 23, 23)
+}
