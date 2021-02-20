@@ -22,7 +22,7 @@ const LandingPage = (props) => {
           <Link to="/users/new" className="button" id='btn-sign'>
             Sign Up
           </Link>
-          <h5 className='subheader landing-phrases'>show the world where you've gone</h5>
+          <h5 className='subheader landing-phrases'>show the world where you've been</h5>
         </div>
       </div>
     </div>
