@@ -5,6 +5,7 @@ import UserRecentTravelsList from './UserRecentTravelsList'
 import NewTravelForm from './NewTravelForm'
 import translateServerErrors from '../services/translateServerErrors'
 import Modal from 'react-modal'
+import MyMappClient from '../services/apiClient/MyMappClient'
 
 const MapShow = (props) => {
   const { id } = useParams()
@@ -17,19 +18,9 @@ const MapShow = (props) => {
   })
 
   const getMap = async () => {
-    try {
-      const response = await fetch(`/api/v1/my-map/${id}`)
-      if (!response.ok) {
-        const errorMessage = `${response.status} ${response.statusText}`
-        const error = new Error(errorMessage);
-        throw (error)
-      }
-      const mapBody = await response.json()
-      setMap(mapBody.map)
-      setMarkers(mapBody.markers)
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
+    const body = await MyMappClient.getMap(id)
+    setMap(body.map)
+    setMarkers(body.markers)
   }
 
   const postTravel = async (newMarkerData) => {
