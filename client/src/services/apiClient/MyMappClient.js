@@ -1,12 +1,17 @@
+import getUserMaps from './requests/getUserMaps'
 import getMap from './requests/getMap'
 import postTravel from './requests/postTravel'
 import deleteTravel from './requests/deleteTravel'
 import editMarker from './requests/editMarker'
-
 import getComments from './requests/comments/getComments'
 import postComment from './requests/comments/postComment'
+import fetchMarker from './requests/fetchMarker'
 
 class MyMappClient {
+  static async getUserMaps() {
+    return getUserMaps()
+  }
+
   static async getMap(id) {
     return getMap(id)
   }
@@ -29,6 +34,10 @@ class MyMappClient {
 
   static async postComment(newCommentData, id) {
     return postComment(newCommentData, id)
+  }
+
+  static async fetchMarker(id) {
+    return fetchMarker(id)
   }
 }
 

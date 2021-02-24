@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import UserTile from './UserTile'
 import { Link } from 'react-router-dom'
+import MyMappClient from '../services/apiClient/MyMappClient'
 
 const UserList = (props) => {
   const [maps, setMaps] = useState([])
 
   const getUserMaps = async () => {
-    try {
-      const response = await fetch('/api/v1/my-map')
-      if (!response.ok) {
-        const errorMessage = `${response.status} ${response.statusText}`
-        const error = new Error(errorMessage);
-        throw (error)
-      }
-      const mapsBody = await response.json()
-      setMaps(mapsBody.maps)
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
+      const body = await MyMappClient.getUserMaps()
+      setMaps(body.maps)
   }
 
   useEffect(() => {
