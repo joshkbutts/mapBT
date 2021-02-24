@@ -24,37 +24,14 @@ const MapShow = (props) => {
   }
 
   const postTravel = async (newMarkerData) => {
-    try {
-      const response = await fetch(`/api/v1/my-map/${id}/markers`, {
-        method: "POST",
-        headers: new Headers({
-          "Accept": "image/jpeg"
-        }),
-        body: newMarkerData
-      })
-      if (!response.ok) {
-        if (response.status === 422) {
-          const body = await response.json()
-          const newErrors = translateServerErrors(body.errors)
-          return setErrors(newErrors)
-        } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw (error)
-        }
-      } else {
-        const body = await response.json()
-        setMarkers([
-          ...markers, body.marker
-        ])
-        setSelectedArea({
-          lat: '',
-          lng: ''
-        })
-      }
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
+    const body = await MyMappClient.postTravel(newMarkerData, id)
+    setMarkers([
+      ...markers, body.marker
+    ])
+    setSelectedArea({
+      lat: '',
+      lng: ''
+    })
   }
 
   const deleteTravel = async (markerData) => {
