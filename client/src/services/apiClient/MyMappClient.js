@@ -1,5 +1,7 @@
 import getMap from './requests/getMap'
 import postTravel from './requests/postTravel'
+import deleteTravel from './requests/deleteTravel'
+import editMarker from './requests/editMarker'
 
 class MyMappClient {
   static async getMap(id) {
@@ -8,6 +10,14 @@ class MyMappClient {
 
   static async postTravel(newMarkerData, id) {
     return postTravel(newMarkerData, id)
+  }
+
+  static async deleteTravel(markerData) {
+    return deleteTravel(markerData)
+  }
+
+  static async editMarker(markerData, id) {
+    return editMarker(markerData, id)
   }
 }
 

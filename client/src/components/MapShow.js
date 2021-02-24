@@ -3,7 +3,6 @@ import Map from './Map'
 import { useParams } from 'react-router-dom'
 import UserRecentTravelsList from './UserRecentTravelsList'
 import NewTravelForm from './NewTravelForm'
-import translateServerErrors from '../services/translateServerErrors'
 import Modal from 'react-modal'
 import MyMappClient from '../services/apiClient/MyMappClient'
 
@@ -35,52 +34,14 @@ const MapShow = (props) => {
   }
 
   const deleteTravel = async (markerData) => {
-    try {
-      const response = await fetch(`/api/v1/markers/${markerData}`, {
-        method: "DELETE",
-        headers: new Headers({
-          "Content-Type": "application/json"
-        }),
-      })
-      if (!response.ok) {
-        const errorMessage = `${response.status} ${response.statusText}`
-        const error = new Error(errorMessage);
-        throw (error)
-      }
-      const body = await response.json()
-      setMarkers(body.markers)
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
+    const body = await MyMappClient.deleteTravel(markerData)
+    setMarkers(body.markers)
   }
 
   const editMarker = async (markerData, id) => {
-    try {
-      const response = await fetch(`/api/v1/markers/${id}`, {
-        method: 'PATCH',
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify(markerData)
-      })
-      if (!response.ok) {
-        if (response.status === 422) {
-          const body = response.json()
-          const newErrors = translateServerErrors(body.errors)
-          setErrors(newErrors)
-        } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw (error)
-        }
-      } else {
-        const body = await response.json()
-        setMarkers(body.markers)
-        setErrors([])
-      }
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
+    const body = await MyMappClient.editMarker(markerData, id)
+    setMarkers(body.markers)
+    setErrors([])
   }
 
   useEffect(() => {
@@ -121,25 +82,19 @@ const MapShow = (props) => {
 
   return (
     <div className="main-container">
-
       <div className='grid-x'>
         <div className='cell small-9'>
           <h3 className="subheader">
             {map.userName}'s Map
           </h3>
         </div>
-
         <div className='cell small-3'>
           <h3 className="subheader">
             recent travels
           </h3>
         </div>
-
       </div>
-
-
       <div className="grid-x grid-margin-x">
-
         <div className="cell small-9">
           <Map
             markers={markers}
@@ -148,7 +103,6 @@ const MapShow = (props) => {
             openModal={openModal}
           />
         </div>
-
         <div className="cell small-3">
           <UserRecentTravelsList
             markers={markers}

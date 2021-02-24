@@ -1,19 +1,19 @@
 import translateServerErrors from '../../translateServerErrors'
 
-const postTravel = async (newMarkerData, id) => {
+const editMarker = async (markerData, id) => {
   try {
-    const response = await fetch(`/api/v1/my-map/${id}/markers`, {
-      method: "POST",
+    const response = await fetch(`/api/v1/markers/${id}`, {
+      method: 'PATCH',
       headers: new Headers({
-        "Accept": "image/jpeg"
+        "Content-Type": "application/json",
       }),
-      body: newMarkerData
+      body: JSON.stringify(markerData)
     })
     if (!response.ok) {
       if (response.status === 422) {
-        const body = await response.json()
+        const body = response.json()
         const newErrors = translateServerErrors(body.errors)
-        return setErrors(newErrors)
+        setErrors(newErrors)
       } else {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -28,4 +28,4 @@ const postTravel = async (newMarkerData, id) => {
   }
 }
 
-export default postTravel
+export default editMarker
