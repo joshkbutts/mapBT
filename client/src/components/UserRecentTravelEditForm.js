@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import translateServerErrors from '../services/translateServerErrors'
+import MyMappClient from '../services/apiClient/MyMappClient'
 
 const UserRecentTravelEditForm = (props) => {
   const [marker, setMarker] = useState({
@@ -11,16 +11,8 @@ const UserRecentTravelEditForm = (props) => {
   const id = props.id
 
   const fetchMarker = async () => {
-    try {
-      const response = await fetch(`/api/v1/markers/${id}`)
-      if (!response.ok) {
-        throw new Error(`${response.status} (${response.statusText})`)
-      }
-      const body = await response.json()
+      const body = await MyMappClient.fetchMarker(id)
       setMarker(body.marker)
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
-    }
   }
 
   useEffect(() => {
