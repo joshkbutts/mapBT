@@ -93,7 +93,7 @@ const NewTravelForm = (props) => {
           )}
         </Dropzone>
 
-        <img src={uploadedImage.preview} />
+        <img className='img-preview'src={uploadedImage.preview} />
         
         <div className='row'>
           <div className='text-center'>

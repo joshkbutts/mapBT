@@ -25,27 +25,16 @@ hr {
   padding: 0px;
 }
 
-#map {
-  height: 500px;
-  width: 500px;
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
+nav {
+  height:70vh;
+  width:100%;
+  overflow:hidden;
+  overflow-y:scroll;
 }
 
-#floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: "Roboto", "sans-serif";
-  line-height: 30px;
-  padding-left: 10px;
+.subheader {
+  font-family: 'Quicksand';
+  color: #1c1622;
 }
 
 .main-container {
@@ -116,11 +105,6 @@ hr {
   box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
-.subheader {
-  font-family: 'Quicksand';
-  color: #1c1622;
-}
-
 .map-img {
   width: 100%;
   max-width: 80px;
@@ -130,15 +114,6 @@ hr {
 .user-travel-button {
   text-align: center;
   padding-top: 45px;
-}
-
-nav {
-  height:70vh;
-  width:100%;
-}
-nav {
-  overflow:hidden;
-  overflow-y:scroll;
 }
 
 .modal {
@@ -238,7 +213,7 @@ nav {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
 }
 
-.travel-show-img {
+.travel-show-img, .img-preview {
   border-radius: 25px;
   max-width: 300px;
   width: 100%;
