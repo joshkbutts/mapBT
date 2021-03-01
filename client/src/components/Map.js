@@ -40,7 +40,7 @@ const Map = (props) => {
   return (
     <div className="google-map">
       <GoogleMapReact
-        
+        bootstrapURLKeys={{ key: 'AIzaSyCKW53YogUBm0FveSyShKHGXhTMPxMwalM' }}
         defaultCenter={center.center}
         defaultZoom={zoom}
         onClick={props.onClick}
