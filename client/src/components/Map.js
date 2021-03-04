@@ -43,7 +43,7 @@ const Map = (props) => {
         bootstrapURLKeys={{ key: 'AIzaSyCKW53YogUBm0FveSyShKHGXhTMPxMwalM' }}
         defaultCenter={center.center}
         defaultZoom={zoom}
-        onClick={props.onClick}
+        onClick={props.mapClick}
       >
         {markerData}
         {qMarker}
