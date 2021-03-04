@@ -52,17 +52,13 @@ const MapShow = (props) => {
     })
   }, [])
 
-  const onClick = ({ lat, lng }) => {
+  let mapClick = mapClick = ({ lat, lng }) => {
     setSelectedArea({ lat: lat.toString(), lng: lng.toString() })
   }
 
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed. 
   }
 
   function closeModal() {
@@ -98,7 +94,7 @@ const MapShow = (props) => {
         <div className="cell small-9">
           <Map
             markers={markers}
-            onClick={onClick}
+            mapClick={mapClick}
             selectedArea={selectedArea}
             openModal={openModal}
           />
@@ -114,7 +110,6 @@ const MapShow = (props) => {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         ariaHideApp={false}
         style={customStyles}
